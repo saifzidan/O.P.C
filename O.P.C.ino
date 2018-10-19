@@ -1,8 +1,11 @@
+#include <SPI.h> //setting com library with the SD card reader
+#include <SD.h>//setting SD reader library
+File info; //setting SD reader library object
 //declaring variables
 // motor control
 int en1 = 2; // enable pin motor 1
 int en2 = 3; // enable pin motor 2
-int in1 = 4; // input pin 1 motor 1
+int in1 = 10; // input pin 1 motor 1
 int in2 = 5; // input pin 2 motor 1
 int in3 = 6; // input pin 1 motor 2  
 int in4 = 7; // input pin 2 motor 2
@@ -152,6 +155,8 @@ void ultrasonic()
 }
 void setup() {
   // put your setup code here, to run once:
+if (SD.begin(4)){
+  Serial.println("SD card is under control");
 pinMode(en1,OUTPUT);
 pinMode(en2,OUTPUT);
 pinMode(in1,OUTPUT);
@@ -161,6 +166,11 @@ pinMode(in4,OUTPUT);
 pinMode(trig,OUTPUT);
 pinMode(echo,INPUT);
 Serial.begin(baud);
+}
+if (!SD.begin (4))
+{
+  Serial.println("SD CARD IS OF SERVICE");
+}
 }
 
 void loop() {

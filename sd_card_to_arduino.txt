@@ -1,0 +1,7 @@
+include sd library and spi one
+VCC = 5V
+GND = GND
+CS = 14
+SCK = 13
+MOSI = 11
+MISO = 12
