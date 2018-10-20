@@ -1,6 +1,3 @@
-#include <SPI.h> //setting com library with the SD card reader
-#include <SD.h>//setting SD reader library
-File info; //setting SD reader library object
 //declaring variables
 // motor control
 int en1 = 2; // enable pin motor 1
@@ -41,13 +38,11 @@ void forward ()
   analogWrite (en1 ,mv1 ); // turn on motor 1 in full speed
   digitalWrite (in1,HIGH); // motor 1 move forward
   digitalWrite (in2,LOW); // motor 1 move forward
-  Serial.println(" left motor moving forward in full speed (5 volts) "); // telling user motor 1 is moving in full speed
   delayt(); // wait for 300 milisecond
   // setting up motor 2
   analogWrite(en2 , mv2); // turn on motor 2 in full speed
   digitalWrite(in3 , HIGH); // motor 2 move forward in full speed
   digitalWrite(in4, LOW); // motor 2 move forward in full speed
-  Serial.println (" right motor moving forward in full speed (5 volts) "); // telling user motor 2 moving in full speed
   delayt(); // wait for 300 milisecond
   Serial.println (" two motors are moving forward in full speed (5 volts) "); //telling user two motors moving in full speed
   delayt(); // wait for 300 milisecond
@@ -62,13 +57,11 @@ void backward()
   analogWrite (en1 ,mv1 ); // turn on motor 1 in full speed
   digitalWrite (in1,LOW); // motor 1 move backward in full speed
   digitalWrite (in2,HIGH); // motor 1 move backward in full speed
-  Serial.println(" left motor moving backward in full speed (5 volts) "); // telling user motor 1 is moving in full speed
   delayt(); // wait for 300 milisecond
   // setting up motor 2
   analogWrite(en2 , mv2); // turn on motor 2 in full speed
   digitalWrite(in3 , LOW); // motor 2 move backward in full speed
   digitalWrite(in4, HIGH); // motor 2 move backward in full speed
-  Serial.println (" right motor moving backward in full speed (5 volts) "); // telling user motor 2 moving in full speed
   delayt(); // wait for 300 milisecond
   Serial.println (" two motors are moving backward in full speed (5 volts) "); //telling user two motors moving in full speed
   delayt(); // wait for 300 milisecond
@@ -83,13 +76,11 @@ void left()
   analogWrite (en1 ,mv1 ); // turn on motor 1 with 1 volt
   digitalWrite (in1,HIGH); // motor 1 move to left with 1 volt
   digitalWrite (in2,LOW); // motor 1 move to left with 1 volt
-  Serial.println(" left motor moving to left with low speed (1 volts) "); // telling user motor 1 is moving with 1 volt
   delayt(); // wait for 300 milisecond
   // setting up motor 2
   analogWrite(en2 , mv2); // turn on motor 2 in full speed
   digitalWrite(in3 , HIGH); // motor 2 move left in full speed
   digitalWrite(in4, LOW); // motor 2 move left in full speed
-  Serial.println (" right motor moving backward in full speed (5 volts) "); // telling user motor 2 moving in full speed
   delayt(); // wait for 300 milisecond
   Serial.println (" left motor is moving left in low speed (1 volt) ; right motor is moving left in full speed (5 volts) "); //telling user two motors moving
   delayt(); // wait for 300 milisecond
@@ -104,13 +95,11 @@ void right()
   analogWrite (en1 ,mv1 ); // turn on motor 1 with 1 volt
   digitalWrite (in1,HIGH); // motor 1 move to right with 1 volt
   digitalWrite (in2,LOW); // motor 1 move to right with 1 volt
-  Serial.println(" left motor moving to right with full speed (5 volts) "); // telling user motor 1 is moving with 5 volt
   delayt(); // wait for 300 milisecond
   // setting up motor 2
   analogWrite(en2 , mv2); // turn on motor 2 with 1 volt
   digitalWrite(in3 , HIGH); // motor 2 move left with 1 volt
   digitalWrite(in4, LOW); // motor 2 move forward with 1 volt 
-  Serial.println (" right motor moving right in low speed (1 volts) "); // telling user motor 2 moving with 1 volt
   delayt(); // wait for 300 milisecond
   Serial.println (" left motor is moving right in full speed (5 volt) ; right motor is moving right in low speed (1 volts) "); //telling user two motors moving
   delayt(); // wait for 300 milisecond
@@ -155,8 +144,7 @@ void ultrasonic()
 }
 void setup() {
   // put your setup code here, to run once:
-if (SD.begin(4)){
-  Serial.println("SD card is under control");
+
 pinMode(en1,OUTPUT);
 pinMode(en2,OUTPUT);
 pinMode(in1,OUTPUT);
@@ -166,11 +154,6 @@ pinMode(in4,OUTPUT);
 pinMode(trig,OUTPUT);
 pinMode(echo,INPUT);
 Serial.begin(baud);
-}
-if (!SD.begin (4))
-{
-  Serial.println("SD CARD IS OF SERVICE");
-}
 }
 
 void loop() {
